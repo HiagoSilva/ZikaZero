@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="8dp"
     android:weightSum="3"
     tools:context="com.projeto.zikazero.MainActivity">
 
@@ -14,23 +15,23 @@
         android:orientation="horizontal"
         android:weightSum="2"
         android:layout_weight="1"
-        android:layout_margin="16dp"
         tools:context="com.projeto.zikazero.MainActivity">
 
-        <ImageButton
+        <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
             android:id="@+id/button"
-            android:background="@drawable/bt_nv_foco"/>
+            android:background="@layout/layout_bt_novo_foco"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="16dp"
-            android:id="@+id/button" />
+            android:layout_margin="8dp"
+            android:id="@+id/button"
+            android:background="@layout/layout_bt_mapa_focos"/>
 
     </LinearLayout>
 
@@ -40,24 +41,23 @@
         android:orientation="horizontal"
         android:weightSum="2"
         android:layout_weight="1"
-        android:layout_margin="16dp"
         tools:context="com.projeto.zikazero.MainActivity">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="New Button"
-            android:layout_margin="16dp"
-            android:id="@+id/button" />
+            android:layout_margin="8dp"
+            android:id="@+id/button"
+            android:background="@layout/layout_bt_posts"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="New Button"
-            android:layout_margin="16dp"
-            android:id="@+id/button" />
+            android:layout_margin="8dp"
+            android:id="@+id/button"
+            android:background="@layout/layout_bt_estatistica"/>
 
     </LinearLayout>
 
@@ -67,24 +67,24 @@
         android:orientation="horizontal"
         android:weightSum="2"
         android:layout_weight="1"
-        android:layout_margin="16dp"
         tools:context="com.projeto.zikazero.MainActivity">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="New Button"
-            android:layout_margin="16dp"
-            android:id="@+id/button" />
+            android:layout_margin="8dp"
+            android:id="@+id/button"
+            android:background="@layout/layout_bt_informacoes"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="New Button"
-            android:layout_margin="16dp"
-            android:id="@+id/button" />
+            android:layout_margin="8dp"
+            android:id="@+id/button"
+            android:background="@layout/layout_bt_noticias"/>
 
     </LinearLayout>
+
 </LinearLayout>
