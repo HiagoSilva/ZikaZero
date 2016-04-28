@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ZikaZero</string>
+    <string name="b_novo_foco">NOVO FOCO</string>
+    <string name="b_mapa_focos">MAPA FOCOS</string>
+    <string name="b_noticias">NOTÍCIAS</string>
+    <string name="b_posts">POSTS</string>
+    <string name="b_informacoes">INFORMAÇÕES</string>
+    <string name="b_estatistica">ESTATÍSTICA</string>
 </resources>
