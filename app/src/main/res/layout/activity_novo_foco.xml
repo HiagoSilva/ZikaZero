@@ -1,93 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:weightSum="2"
-    android:orientation="vertical"
-    tools:context="com.projeto.zikazero.NovoFocoActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp"
-        android:layout_weight="1">
-        <RelativeLayout
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:weightSum="2"
+        tools:context="com.projeto.zikazero.NovoFocoActivity">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:layout_weight="1">
+
             <ImageView
+                android:id="@+id/iv_foto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/iv_foto"
-                android:scaleType="centerCrop"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+                android:onClick="tirarFoto"
+                android:scaleType="center"
                 android:src="@drawable/bt_camera" />
 
-        </RelativeLayout>
-    </LinearLayout>
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp"
-        android:layout_weight="1">
-        <RelativeLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="5">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Descrição"
                 android:id="@+id/tv_descricao"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Descrição" />
+
 
             <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/et_descricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autoText="false"
                 android:hint="Informe uma descrição"
-                android:layout_below="@+id/tv_descricao"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:imeOptions="actionNext"
+                android:selectAllOnFocus="true"
+                android:singleLine="false"
+                android:maxLength="255" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Localização"
                 android:id="@+id/tv_localizacao"
-                android:layout_below="@+id/et_descricao"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText"
-                android:layout_below="@+id/tv_localizacao"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_weight="1"
+                android:text="Localização" />
 
-            <Button
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tv_localizacao_auto"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Enviar"
-                android:id="@+id/b_enviar"
-                android:layout_below="@+id/editText"
-                android:layout_centerHorizontal="true" />
+                android:layout_weight="1"
+                android:text="Localização"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/lb_cancelar" />
+
+                <Button
+                    android:id="@+id/b_enviar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editText"
+                    android:layout_centerHorizontal="true"
+                    android:layout_weight="1"
+                    android:text="Enviar" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

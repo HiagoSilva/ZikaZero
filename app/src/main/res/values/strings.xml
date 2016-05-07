@@ -6,4 +6,5 @@
     <string name="b_posts">POSTS</string>
     <string name="b_informacoes">INFORMAÇÕES</string>
     <string name="b_estatistica">ESTATÍSTICA</string>
+    <string name="lb_cancelar">CANCELAR</string>
 </resources>
