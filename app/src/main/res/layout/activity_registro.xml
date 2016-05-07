@@ -12,7 +12,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/etNomeUsuario"
+        android:id="@+id/et_usuario"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -23,9 +23,9 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/etSenha"
+        android:id="@+id/et_senha"
         android:hint="Senha"
-        android:layout_below="@+id/etNomeUsuario"
+        android:layout_below="@+id/et_usuario"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
@@ -37,18 +37,18 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/etConfirmarSenha"
-        android:layout_below="@+id/etSenha"
+        android:layout_below="@+id/et_senha"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/etNomeUsuario"
-        android:layout_alignEnd="@+id/etNomeUsuario"
+        android:layout_alignRight="@+id/et_usuario"
+        android:layout_alignEnd="@+id/et_usuario"
         android:hint="Confirmar Senha" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cadastrar"
-        android:id="@+id/b_cadastrar"
+        android:id="@+id/b_logar"
         android:layout_below="@+id/etConfirmarSenha"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
