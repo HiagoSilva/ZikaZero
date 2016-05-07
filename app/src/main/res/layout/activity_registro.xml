@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/etConfirmarSenha"
+        android:id="@+id/et_confirmar_senha"
         android:layout_below="@+id/et_senha"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -49,10 +49,10 @@
         android:layout_height="wrap_content"
         android:text="Cadastrar"
         android:id="@+id/b_logar"
-        android:layout_below="@+id/etConfirmarSenha"
+        android:layout_below="@+id/et_confirmar_senha"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/etConfirmarSenha"
-        android:layout_alignEnd="@+id/etConfirmarSenha" />
+        android:layout_alignRight="@+id/et_confirmar_senha"
+        android:layout_alignEnd="@+id/et_confirmar_senha" />
 
 </RelativeLayout>
