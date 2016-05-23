@@ -19,7 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="16dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="2">
 
             <ImageView
                 android:id="@+id/iv_foto"
@@ -28,6 +30,13 @@
                 android:onClick="tirarFoto"
                 android:scaleType="center"
                 android:src="@drawable/bt_camera" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SELECIONE PARA FOTO"
+                android:textAlignment="center"
+                android:layout_margin="8dp"/>
 
         </LinearLayout>
 
@@ -67,13 +76,29 @@
                 android:layout_weight="1"
                 android:text="Localização" />
 
-            <TextView
-                android:id="@+id/tv_localizacao_auto"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Localização"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:layout_height="match_parent"
+                android:weightSum="2"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/iv_localizacao"
+                    android:layout_weight="1"
+                    android:src="@drawable/mudar_endereco"/>
+
+                <TextView
+                    android:id="@+id/tv_localizacao_auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/lb_localizacao_automatica"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -84,20 +109,31 @@
                 android:weightSum="2">
 
                 <Button
-                    android:id="@+id/button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/lb_cancelar" />
-
-                <Button
                     android:id="@+id/b_enviar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/editText"
                     android:layout_centerHorizontal="true"
                     android:layout_weight="1"
+                    android:background="@layout/layout_bt_bg"
+                    android:textSize="16dp"
+                    android:typeface="serif"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="8dp"
                     android:text="Enviar" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@layout/layout_bt_bg"
+                    android:textSize="16dp"
+                    android:typeface="serif"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="8dp"
+                    android:onClick="cancelar"
+                    android:text="@string/lb_cancelar" />
 
             </LinearLayout>
 

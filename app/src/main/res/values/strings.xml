@@ -7,4 +7,5 @@
     <string name="b_informacoes">INFORMAÇÕES</string>
     <string name="b_estatistica">ESTATÍSTICA</string>
     <string name="lb_cancelar">CANCELAR</string>
+    <string name="lb_localizacao_automatica">Localização automática</string>
 </resources>
