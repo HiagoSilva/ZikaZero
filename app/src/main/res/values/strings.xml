@@ -4,8 +4,10 @@
     <string name="b_mapa_focos">MAPA FOCOS</string>
     <string name="b_noticias">NOTÍCIAS</string>
     <string name="b_posts">POSTS</string>
+    <string name="lb_cadastro">CADASTRO</string>
     <string name="b_informacoes">INFORMAÇÕES</string>
     <string name="b_estatistica">ESTATÍSTICA</string>
     <string name="lb_cancelar">CANCELAR</string>
     <string name="lb_localizacao_automatica">Localização automática</string>
+    <string name="API_KEY">AIzaSyBxfFScqyQvwugBMvc-5ketomlJpAYaEm4</string>
 </resources>

@@ -12,7 +12,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/et_nome"
+        android:id="@+id/etNome"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -25,19 +25,19 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/et_senha"
-        android:layout_below="@+id/et_nome"
+        android:id="@+id/etSenha"
+        android:layout_below="@+id/etNome"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/et_nome"
-        android:layout_alignEnd="@+id/et_nome"
+        android:layout_alignRight="@+id/etNome"
+        android:layout_alignEnd="@+id/etNome"
         android:hint="Senha" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Entrar"
-        android:id="@+id/b_logar"
+        android:id="@+id/btCadastrar"
         android:layout_below="@+id/tv_esqueci_minha_senha"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:text="Realizar registro"
         android:id="@+id/tv_realizar_registro"
-        android:layout_below="@+id/b_logar"
+        android:layout_below="@+id/btCadastrar"
         android:layout_centerHorizontal="true"
         android:clickable="true" />
 
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:text="Esqueci minha senha"
         android:id="@+id/tv_esqueci_minha_senha"
-        android:layout_below="@+id/et_senha"
+        android:layout_below="@+id/etSenha"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:clickable="true" />

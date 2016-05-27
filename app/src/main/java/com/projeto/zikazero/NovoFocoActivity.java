@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -15,13 +17,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.projeto.zikazero.Dao.RepositorioPublicacoes;
+import com.projeto.zikazero.Dao.entidade.Publicacao;
+import com.projeto.zikazero.database.ConnectionManager;
+import com.projeto.zikazero.util.TransformarFotoBits;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -45,10 +53,19 @@ public class NovoFocoActivity extends AppCompatActivity
     public ImageView imgFoco;
     private EditText descricaoLugar;
     private TextView localizacaoAuto;
+    private Button btEnviar;
+    private Button btCanelar;
 
     private Bitmap bitmap;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     Boolean fotoOk = false;
+
+    private SQLiteDatabase conn;
+    private RepositorioPublicacoes publicacoes;
+    private Publicacao publicacao;
+
+    private String latitude;
+    private String longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +75,60 @@ public class NovoFocoActivity extends AppCompatActivity
         imgFoco = (ImageView) findViewById(R.id.iv_foto);
         descricaoLugar = (EditText) findViewById(R.id.et_descricao);
         localizacaoAuto = (TextView) findViewById(R.id.tv_localizacao_auto);
+        btEnviar = (Button)findViewById(R.id.b_enviar);
+
+
+        btEnviar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (publicacao == null){
+                    inserir();
+                    fotoOk = false;
+                    finish();
+                }
+            }
+        });
 
     }
 
+    public void inserir(){
+
+        try {
+            //PEGA INSTANCIA PELO GERENCIADOR DE CONEXAO
+            conn = ConnectionManager.getConexao(this);
+
+            //TODO ALTERACAO QUE FIZ PARA FUNCIONAR, TENHO QUE ENTENDER DEPOIS
+            publicacoes = new RepositorioPublicacoes(conn);
+
+            //INSTANCIANDO UMA PUBLICACAO
+            publicacao = new Publicacao();
+
+            //PASSANDO OS VALORES INFORMADOS NA TELA DE NOVO FOCO
+            publicacao.setIdUsuario(1l);
+            publicacao.setDescricao(descricaoLugar.getText().toString());
+            publicacao.setFoto(TransformarFotoBits.fotoByte(imgFoco));
+            publicacao.setLatitude(latitude);
+            publicacao.setLongitude(longitude);
+            publicacao.setEndereco(localizacaoAuto.getText().toString());
+
+            //CHAMANDO O METODO DE INSERIR
+            publicacoes.inserirPublicacao(publicacao);
+
+            //MOSTRA UMA MENSAGEM INFORMANDO QUE O BANCO NAO FOI CRIADO
+            AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+            dlg.setMessage("Publicação resgitrada!");
+            dlg.setNeutralButton("OK", null);
+            dlg.show();
+
+        } catch (SQLException ex){
+
+            //MOSTRA UMA MENSAGEM INFORMANDO O REGISTRO NAO FOI INSERIDO NA TABELA
+            AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+            dlg.setMessage("Erro cadastrar registro: " + ex.getMessage());
+            dlg.setNeutralButton("OK", null);
+            dlg.show();
+
+        }
+    }
 
     private synchronized void callConnection(){
         Log.i("LOG", "NovoFocoActivity.callConnection()");
@@ -85,7 +153,7 @@ public class NovoFocoActivity extends AppCompatActivity
     public void onConnected(Bundle bundle) {
         Log.i("LOG", "NovoFocoActivity.onConnected(" + bundle + ")");
 
-        //buscando ultima localizacao disponivel
+        //BUSCANDO ULTIMA LOCALIZACAO DISPONIVEL
         Location l = LocationServices
                 .FusedLocationApi
                 .getLastLocation(mGoogleApiClient);
@@ -96,8 +164,12 @@ public class NovoFocoActivity extends AppCompatActivity
         String resultAddress = "";
 
 
+        //BUSCANDO A LOCALIZAÇÃO PASSANDO A LAT E LONG, SE FUNCIONAR RETORNA 1 ENDERECO
         try {
             list = (ArrayList<Address>) geocoder.getFromLocation(l.getLatitude(), l.getLongitude(), 1);
+            latitude = String.valueOf(l.getLatitude());
+            longitude = String.valueOf(l.getLongitude());
+            Log.i("CORD", latitude + " | " + longitude);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -156,8 +228,9 @@ public class NovoFocoActivity extends AppCompatActivity
                 }
                 stream = getContentResolver().openInputStream(data.getData());
                 bitmap = BitmapFactory.decodeStream(stream);
-                imgFoco.setImageBitmap(resizeImage(this, bitmap, 500, 428));
-                girarFoto(imgFoco);
+                imgFoco.setImageBitmap(resizeImage(this, bitmap, 300, 200));
+                Log.i("LOG", "Rotacao: " + imgFoco.getRotation());
+                //girarFoto(imgFoco);
                 fotoOk = true;
             } catch (FileNotFoundException e){
                 fotoOk = false;
@@ -173,7 +246,7 @@ public class NovoFocoActivity extends AppCompatActivity
         }
     }
 
-    private static Bitmap resizeImage(Context context, Bitmap bmpOriginal, float newWidth, float newHeight){
+    public static Bitmap resizeImage(Context context, Bitmap bmpOriginal, float newWidth, float newHeight){
         Bitmap novoBmp = null;
 
         int w = bmpOriginal.getWidth();
@@ -191,9 +264,10 @@ public class NovoFocoActivity extends AppCompatActivity
         Matrix matrix = new Matrix();
 
         //Definindo a escala da proporcao para a matrix
-        matrix.postScale(scalaW, scalaW);
+        matrix.postScale(scalaW, scalaH);
 
         //criando o novo Bitmap com o novo tamanho
+        matrix.postRotate(90);
         novoBmp = Bitmap.createBitmap(bmpOriginal, 0, 0, w, h, matrix, true);
 
         return novoBmp;
@@ -201,6 +275,13 @@ public class NovoFocoActivity extends AppCompatActivity
 
     public void girarFoto(View v){
         imgFoco.setRotation(90);
+    }
+
+    public static Bitmap RotateBitmap(Bitmap source, float angle)
+    {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
     }
 
     @Override

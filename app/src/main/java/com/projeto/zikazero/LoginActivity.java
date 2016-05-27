@@ -18,10 +18,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etUsuario       = (EditText) findViewById(R.id.et_nome);
-        etSenha         = (EditText) findViewById(R.id.et_senha);
+        etUsuario       = (EditText) findViewById(R.id.etNome);
+        etSenha         = (EditText) findViewById(R.id.etSenha);
         tvEsqueciSenha  = (TextView) findViewById(R.id.tv_esqueci_minha_senha);
-        bLogar          = (Button) findViewById(R.id.b_logar);
+        bLogar          = (Button) findViewById(R.id.btCadastrar);
 
     }
 }

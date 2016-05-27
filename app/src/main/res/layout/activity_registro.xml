@@ -8,12 +8,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.projeto.zikazero.RegistroActivity">
+    tools:context="com.projeto.zikazero.RegistroActivity"
+    android:padding="16dp">
 
     <EditText
         android:layout_width="351dp"
         android:layout_height="wrap_content"
-        android:id="@+id/et_nome"
+        android:id="@+id/etNome"
         android:hint="Nome" />
 
     <EditText
@@ -21,14 +22,14 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/et_email"
+        android:id="@+id/etEmail"
         android:layout_gravity="center_horizontal"
         android:hint="E-mail" />
 
     <EditText
         android:layout_width="352dp"
         android:layout_height="wrap_content"
-        android:id="@+id/et_senha"
+        android:id="@+id/etSenha"
         android:hint="Senha" />
 
     <EditText
@@ -36,30 +37,51 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/et_confirmar_senha"
+        android:id="@+id/etConfirmarSenha"
         android:hint="Confirmar Senha" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         android:weightSum="2">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cadastrar"
-            android:id="@+id/b_logar"
+            android:id="@+id/btCadastrar"
             android:layout_weight="1"
-            android:background="@layout/layout_bt_bg" />
+            android:background="@layout/layout_bt_bg"
+            android:layout_margin="8dp" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/lb_cancelar"
-            android:id="@+id/b_cancelar"
+            android:id="@+id/btCancelar"
             android:layout_weight="1"
-            android:background="@layout/layout_bt_bg" />
+            android:background="@layout/layout_bt_bg"
+            android:layout_margin="8dp"/>
+
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Pular Registro"
+            android:id="@+id/tvPular"
+            android:textColor="@color/colorPrimary"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:linksClickable="true"
+            android:textColorLink="#2528c9" />
+    </RelativeLayout>
 
 </LinearLayout>
